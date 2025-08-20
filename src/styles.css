@@ -15,26 +15,6 @@
 @utility xl-dialog {
   @apply max-h-[85dvh] 2xl:w-[45dvw] xl:w-[50dvw] lg:w-[55dvw] md:w-[60dvw] sm:w-[65dvw] w-[85dvw] overflow-auto transition-all shadow-2xl duration-100 ease-in-out bg-white rounded-md p-4;
 }
-@utility scroll-reveal {
-  animation: scroll-reveal linear;
-  animation-timeline: view();
-  animation-range: entry 0% cover 25%;
-}
-
-@theme {
-  --color-bread-50:  #fff8ec;  /* harina / miga fresca */
-  --color-bread-100: #ffeec7;  /* mantequilla suave */
-  --color-bread-200: #ffe09e;  /* dorado claro */
-  --color-bread-300: #ffd074;  /* dorado medio */
-  --color-bread-400: #fcb948;  /* miel / pan brioche */
-  --color-bread-500: #eaa634;  /* pan tradicional */
-  --color-bread-600: #c07f24;  /* costra ligera */
-  --color-bread-700: #8d5a1e;  /* pan rústico horneado */
-  --color-bread-800: #5f3b16;  /* tostado fuerte */
-  --color-bread-900: #3d270e;  /* borde crujiente */
-  --color-bread-950: #241506;  /* casi quemado */
-
-}
 
 @font-face {
   font-family: 'LibertinusMono';
@@ -90,55 +70,45 @@ span {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/*
-  Clases personalizadas.
-*/
-
-.background_login {
-  display: flex;
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-}
-
-.background_login::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: linear-gradient(to bottom,
-      rgba(255, 247, 241, 0.1),
-      rgba(255, 247, 241, 0.6)),
-    repeating-linear-gradient(0deg,
-      rgba(255, 255, 255, 0.3) 0px,
-      rgba(255, 255, 255, 0.3) 1px,
-      transparent 2px,
-      transparent 50px),
-    repeating-linear-gradient(90deg,
-      rgba(255, 255, 255, 0.3) 0px,
-      rgba(255, 255, 255, 0.3) 1px,
-      transparent 2px,
-      transparent 50px),
-    linear-gradient(to right, #6366f1, #ec4899, #ff696f);
-  filter: blur(2px);
-  z-index: -1;
-}
-
-/*
-  Animaciones.
-*/
-
-@keyframes scroll-reveal {
-  from {
-    opacity: 0;
-    transform: translateX(-100px) scale(0.5);
+/* Animaciones */
+@layer utilities {
+  @keyframes fade-in-up {
+    from {opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
   }
-  to {
-    opacity: 1;
-    transform: translateX(0px) scale(1);
+
+  @keyframes fadeOutDown {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(10px); }
+  }
+
+  /* Animacion de entrada de los colores */
+  .fade-in-up {
+    animation: fade-in-up 0.4s ease forwards;
+  }
+  /* Animacion de salida de los colores */
+  .fade-in-close {
+    animation: fadeOutDown 0.3s forwards;
   }
 }
+
+
+.menu-shadow {
+  box-shadow: 0 0 0 35px rgba(255, 255, 255, 0.3), 0 0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+/* Medianas y superiores (md: >=768px) */
+@media (max-width: 1279px) and (min-width: 768px) {
+  .menu-shadow {
+    box-shadow: 0 0 0 25px rgba(255, 255, 255, 0.3), 0 0 0 30px rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Resto (menor a md: <768px) */
+@media (max-width: 767px) {
+  .menu-shadow {
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.3), 0 0 0 25px rgba(255, 255, 255, 0.3);
+  }
+}
+
+
