@@ -1,8 +1,9 @@
 /* eslint-disable @angular-eslint/prefer-inject */
-import { inject, signal, WritableSignal } from '@angular/core';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { getFormConfig } from '../../domain/models/generic/generic-forms';
 
+@Injectable({providedIn: 'any'})
 export class GenericFormsService<TForms extends Record<string, FormGroup>> {
   // * Inyeccion de dependencias.
   public readonly _fb: FormBuilder = inject(FormBuilder);

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { createFormsService, GenericFormsService } from './generic-forms';
+import { createFormsService, GenericFormsService } from './generic-forms.service';
 import { FormGroup } from '@angular/forms';
 import { Route } from '../../domain/models/api/api';
 import { createApiService, GenericApiService } from './generic-api.service';

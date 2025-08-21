@@ -1,24 +1,29 @@
 import { Component, inject } from '@angular/core';
-import { TestService } from './test.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TestService } from '../../../../infrastructure/services/test.service';
+import { GenericCommonService } from '../../../../infrastructure/common/generic.service';
 
 @Component({
   selector: 'app-test',
   imports: [ReactiveFormsModule],
+  providers: [
+    {
+      provide: GenericCommonService,
+      useExisting: TestService,
+      multi: true, 
+      deps: [TestService] 
+    }
+  ],
   template: `
     <h1>Soy test1</h1>
-    <!-- <form [formGroup]="form">
+    <form [formGroup]="form">
       <input type="text" formControlName="value" />
-    </form> -->
+    </form>
   `,
 })
 export class TestComponent {
   private readonly _service = inject(TestService);
+  public form = this._service._generic.Forms.getForm({ key: 'test', reset: false });
 
-  constructor() {
-    console.log('Hola mund 2o');
-    this._service._Generic.Api.request('test2', {}).then(val => {
-      console.log(val);
-    });
-  }
+  constructor() {}
 }

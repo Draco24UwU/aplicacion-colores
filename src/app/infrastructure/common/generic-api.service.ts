@@ -10,7 +10,7 @@ import { firstValueFrom } from 'rxjs';
 import { GenericCommon } from './generic.';
 
 const apiUrl = 'g';
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'any' })
 export class GenericApiService<
   TAPIs extends NonNullable<GenericCommon['api']>,
 > {
