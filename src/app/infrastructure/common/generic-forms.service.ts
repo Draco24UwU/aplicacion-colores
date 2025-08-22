@@ -13,7 +13,7 @@ export class GenericFormsService<TForms extends Record<string, FormGroup>> {
 
   // * Metodos.
   public getForm<K extends keyof TForms>(config: getFormConfig<K>): TForms[K] {
-    const form = this.$forms()[config.key];
+    const form = this.$forms()[config.form];
     if (config.reset) form.reset();
     return form;
   }

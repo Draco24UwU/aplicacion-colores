@@ -7,7 +7,7 @@ import {
   RouteLocal,
 } from '../../domain/models/api/api';
 import { firstValueFrom } from 'rxjs';
-import { GenericCommon } from './generic.';
+import { GenericCommon } from './generic';
 
 const apiUrl = 'g';
 @Injectable({ providedIn: 'any' })

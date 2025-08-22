@@ -1,4 +1,4 @@
 export interface getFormConfig<T> {
-  key: T;
+  form: T;
   reset: boolean;
 }

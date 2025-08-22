@@ -17,15 +17,15 @@ import { TestService } from '../../../../infrastructure/services/test.service';
       }
     ],
   template: `
-    <h1>Soy test2</h1>
+    <!-- <h1>Soy test2</h1> -->
     <form [formGroup]="form">
-      <input type="text" formControlName="value" />
+      <!-- <input type="text" formControlName="value" /> -->
     </form>
   `,
 })
 export class Test2Component {
   private readonly _service = inject(TestService2);
-  public form = this._service._generic.Forms.getForm({ key: 'test', reset: false });
+  public form = this._service._generic.Forms.getForm({ form: 'test', reset: false });
 
   constructor() {}
 
